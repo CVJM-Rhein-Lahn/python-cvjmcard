@@ -50,10 +50,11 @@ class Statistic(object):
 
 	def getTotalPayingKV(self):
 		total = 0
-		for cAgeKey, c in self._counts.items():
-			for mTypeKey, m in c.items():
-				if mTypeKey == 'Mitglieder':
-					total += sum(m.values())
+		if cAgeKey not in ['bis 8 Jahre']:
+			for cAgeKey, c in self._counts.items():
+				for mTypeKey, m in c.items():
+					if mTypeKey == 'Mitglieder':
+						total += sum(m.values())
 		return total
 
 	def getTotalGuests(self):
@@ -98,6 +99,16 @@ class Address(object):
 		if zipCode and zipCode.isdigit() and city:
 			self.zipCode = zipCode
 			self.city = city
+
+	def getName(self):
+		firstName, lastName = self.name.strip().rsplit(' ', 1)
+		return (firstName, lastName)
+
+	def getFirstName(self):
+		return self.getName()[0]
+
+	def getLastName(self):
+		return self.getName()[1]
 
 	def getFormatted(self):
 		firstName, lastName = self.name.strip().rsplit(' ', 1)
