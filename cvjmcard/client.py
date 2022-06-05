@@ -305,7 +305,26 @@ class WestbundParser(object):
 		ads = []
 		for c in self._clubs:
 			for a in c.addresses:
-				if a.function in ['MJ', 'GJ', 'JJ', 'IN', 'JF']:
+				if a.function in ['IN', 'MJ', 'GJ', 'JJ', 'IN', 'JF']:
+					ads.append(a)
+
+		return ads
+
+	def getJugendLeiter(self):
+		ads = []
+		for c in self._clubs:
+			for a in c.addresses:
+				if a.function in ['JE', 'JK', 'JU', 'MK', 'PO']:
+					ads.append(a)
+
+		return ads
+
+	def getMitarbeiter(self):
+		ads = []
+		for c in self._clubs:
+			for a in c.addresses:
+				if a.function in ['IN', 'MJ', 'GJ', 'JJ', 'IN', 'JF', 
+					'JE', 'JK', 'JU', 'MK', 'PO', 'VM']:
 					ads.append(a)
 
 		return ads

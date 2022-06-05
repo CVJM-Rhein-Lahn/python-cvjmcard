@@ -1,11 +1,14 @@
-import setuptools
+import setuptools, os
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+with open('requirements.txt', 'rb') as fh:
+    requirements = fh.read().decode('utf-8').split(os.linesep)
+
 setuptools.setup(
     name="cvjmcard",
-    version="0.0.1",
+    version="0.0.2",
     author="Lukas Schreiner",
     author_email="dev+cvjm@lschreiner.de",
     description="A small client to fetch statistics and addresses from cvjm-card.de",
@@ -18,4 +21,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=requirements
 )
